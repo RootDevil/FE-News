@@ -5,16 +5,17 @@ import TopicNav from "./TopicNav";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
+  const [selectedArticle, setSelectedArticle] = useState();
 
   useEffect(() => {
-    api.fetchArticles().then((articles) => {
+    api.fetchArticles(selectedArticle).then((articles) => {
       setArticles(articles);
     });
-  }, []);
+  }, [selectedArticle]);
 
   return (
     <section className="Articles">
-      <TopicNav />
+      <TopicNav setSelectedArticle={setSelectedArticle}/>
       <section className="Articles-grid">
         {articles.map((article) => {
           return (
