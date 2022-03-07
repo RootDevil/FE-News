@@ -1,5 +1,6 @@
 import ThumbsUpDownIcon from "@mui/icons-material/ThumbsUpDown";
 import ModeCommentIcon from "@mui/icons-material/ModeComment";
+import { Link } from "react-router-dom";
 
 const ArticleCard = ({ title, topic, author, votes, comment_count }) => {
   return (
@@ -11,10 +12,9 @@ const ArticleCard = ({ title, topic, author, votes, comment_count }) => {
         <ModeCommentIcon className="icon" fontSize="inherit" />
         <p className="widget-text">{comment_count}</p>
         <p className="Article-card-subheader">
-        <u>{topic}</u> | {author}
-      </p>
+          <Link color="" to={`/topics/${topic}`}><u>{topic}</u></Link> | {author}
+        </p>
       </span>
-      
     </div>
   );
 };

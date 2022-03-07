@@ -1,6 +1,6 @@
-import { Button, ButtonGroup } from "@mui/material";
+import { Box, Button, ButtonGroup } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import * as api from "../utils/api";
 
 const TopicNav = () => {
@@ -14,18 +14,16 @@ const TopicNav = () => {
 
   return (
     <nav className="TopicNav">
-      <ButtonGroup color="info">
-        <Link to="/">
-          <Button>ALL</Button>
-        </Link>
-        {topics.map(({ slug }) => {
-          return (
-            <Link to={`/topics/${slug}`}>
-              <Button>{slug}</Button>
-            </Link>
-          );
-        })}
-      </ButtonGroup>
+      <NavLink to="/">
+        <Button>ALL</Button>
+      </NavLink>
+      {topics.map(({ slug }) => {
+        return (
+          <NavLink to={`/topics/${slug}`} key={`button-${slug}`}>
+            <Button>{slug}</Button>
+          </NavLink>
+        );
+      })}
     </nav>
   );
 };
