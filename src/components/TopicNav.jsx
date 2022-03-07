@@ -1,8 +1,9 @@
 import { Button, ButtonGroup } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import * as api from "../utils/api";
 
-const TopicNav = ({ setSelectedArticle }) => {
+const TopicNav = () => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -11,16 +12,18 @@ const TopicNav = ({ setSelectedArticle }) => {
     });
   }, []);
 
-  const handleClick = (slug) => {
-    setSelectedArticle(slug);
-  }
-
   return (
     <nav className="TopicNav">
       <ButtonGroup color="info">
-          <Button onClick={() => handleClick()}>ALL</Button>
+        <Link to="/">
+          <Button>ALL</Button>
+        </Link>
         {topics.map(({ slug }) => {
-          return <Button onClick={() => {handleClick(slug)}}>{slug}</Button>;
+          return (
+            <Link to={`/topics/${slug}`}>
+              <Button>{slug}</Button>
+            </Link>
+          );
         })}
       </ButtonGroup>
     </nav>

@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import * as api from "../utils/api";
 import ArticleCard from "./ArticleCard";
 import TopicNav from "./TopicNav";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
-  const [selectedArticle, setSelectedArticle] = useState();
+  const { topic_slug } = useParams();
 
   useEffect(() => {
-    api.fetchArticles(selectedArticle).then((articles) => {
+    api.fetchArticles(topic_slug).then((articles) => {
       setArticles(articles);
     });
-  }, [selectedArticle]);
+  }, [topic_slug]);
 
   return (
     <section className="Articles">
-      <TopicNav setSelectedArticle={setSelectedArticle}/>
+      <TopicNav />
       <section className="Articles-grid">
         {articles.map((article) => {
           return (
