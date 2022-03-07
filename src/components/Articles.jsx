@@ -13,9 +13,9 @@ const Articles = () => {
 
   return (
     <section className="Articles">
-      {articles.map((article, index) => {
+      {articles.map((article) => {
         return <ArticleCard 
-            key={`article-${index}`} 
+            key={`article-${article.article_id}`} 
             title={article.title}
             topic={article.topic}
             author={article.author}
