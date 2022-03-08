@@ -1,6 +1,7 @@
 import ThumbsUpDownIcon from "@mui/icons-material/ThumbsUpDown";
 import ModeCommentIcon from "@mui/icons-material/ModeComment";
 import { Link } from "react-router-dom";
+import StyledLink from "./StyledLink";
 
 const ArticleCard = ({
   articleId,
@@ -12,9 +13,9 @@ const ArticleCard = ({
 }) => {
   return (
     <div className="Article-card">
-      <Link to={`/articles/${articleId}`}>
+      <StyledLink to={`/articles/${articleId}`}>
         <h2 className="Article-card-title">{title}</h2>
-      </Link>
+      </StyledLink>
       <span className="Card-widget">
         <ThumbsUpDownIcon className="icon" />
         <p className="widget-text">{votes}</p>
