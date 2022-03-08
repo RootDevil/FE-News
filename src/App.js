@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Articles from "./components/Articles";
 import Header from "./components/Header";
+import SingleArticle from "./components/SingleArticle";
 
 const theme = createTheme({
   palette: {
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Articles />} />
           <Route path="/topics/:topic_slug" element={<Articles />} />
+          <Route path="/articles/:article_id" element={<SingleArticle />} />
         </Routes>
       </div>
     </ThemeProvider>

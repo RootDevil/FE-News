@@ -12,6 +12,14 @@ export const fetchArticles = (topic) => {
     });
 };
 
+export const fetchArticleById = (articleId) => {
+  return axios
+    .get(`https://slurpy-nc-news.herokuapp.com/api/articles/${articleId}`)
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
+
 export const fetchTopics = () => {
   return axios
     .get("https://slurpy-nc-news.herokuapp.com/api/topics")
