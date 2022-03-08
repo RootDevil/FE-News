@@ -68,3 +68,26 @@
   margin-bottom: 10px;
   padding: 20px;
 }
+
+.Section-Single-Article {
+  max-width: 80vw;
+  margin: auto;
+}
+
+.Header-Section-Title {
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 10px;
+  padding: 20px;
+}
+
+.Article-body {
+  text-align: left;
+  border-bottom: 1px solid lightgrey;
+}
+
+.Article-section-body:first-letter {
+  font-size: 128px;
+}
+
+.Article-title-span {
+}

@@ -3,7 +3,7 @@ import ModeCommentIcon from "@mui/icons-material/ModeComment";
 import { Link } from "react-router-dom";
 
 const ArticleCard = ({
-  article_id,
+  articleId,
   title,
   topic,
   author,
@@ -12,7 +12,7 @@ const ArticleCard = ({
 }) => {
   return (
     <div className="Article-card">
-      <Link to={`/articles/${article_id}`}>
+      <Link to={`/articles/${articleId}`}>
         <h2 className="Article-card-title">{title}</h2>
       </Link>
       <span className="Card-widget">
