@@ -45,7 +45,7 @@ const SingleArticle = () => {
         </span>
         <p className="Article-section-body">{article.body}</p>
       </section>
-      <InteractionPanel votes={article.votes}/>
+      <InteractionPanel articleId={article.article_id} votes={article.votes}/>
     </section>
   );
 };
