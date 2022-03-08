@@ -27,3 +27,12 @@ export const fetchTopics = () => {
       return topics;
     });
 };
+
+export const updateVotesByArticleId = (articleId, vote) => {
+  return axios.patch(
+    `https://slurpy-nc-news.herokuapp.com/api/articles/${articleId}`,
+    {
+      inc_votes: vote
+    }
+  );
+};

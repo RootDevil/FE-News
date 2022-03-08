@@ -3,6 +3,7 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as api from "../utils/api";
+import InteractionPanel from "./InteractionPanel";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
@@ -44,6 +45,7 @@ const SingleArticle = () => {
         </span>
         <p className="Article-section-body">{article.body}</p>
       </section>
+      <InteractionPanel articleId={article.article_id} votes={article.votes} author={article.author}/>
     </section>
   );
 };
