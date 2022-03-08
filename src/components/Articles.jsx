@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../utils/api";
@@ -21,7 +22,7 @@ const Articles = () => {
     <section className="Articles">
       <TopicNav />
       {isLoading ? (
-        <p>Loading...</p>
+        <CircularProgress color="primary" />
       ) : (
         <section className="Articles-grid">
           {articles.map((article) => {

@@ -1,6 +1,6 @@
-import { Box, Button, ButtonGroup } from "@mui/material";
+import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import * as api from "../utils/api";
 
 const TopicNav = () => {

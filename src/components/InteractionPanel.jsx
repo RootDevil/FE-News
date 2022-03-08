@@ -18,6 +18,7 @@ const InteractionPanel = ({ articleId, votes, author }) => {
     setVotesChange((currentChange) => currentChange + votecrement);
     api.updateVotesByArticleId(articleId, votecrement).catch((error) => {
       setError(error);
+      setArticleVotes((currentVotes) => currentVotes - votecrement);
     });
   };
 

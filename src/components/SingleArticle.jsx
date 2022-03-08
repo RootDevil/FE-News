@@ -1,9 +1,10 @@
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import * as api from "../utils/api";
 import InteractionPanel from "./InteractionPanel";
+import StyledLink from "./StyledLink";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
@@ -17,9 +18,9 @@ const SingleArticle = () => {
       setArticle(article);
       setIsLoading(false);
     });
-  }, []);
+  }, [article_id]);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <CircularProgress color="primary" />;
 
   return (
     <section className="Section-Single-Article">
@@ -35,7 +36,7 @@ const SingleArticle = () => {
           >
             Back
           </Button>
-          | <Link to={`/topics/${article.topic}`}>{article.topic}</Link>
+          | <StyledLink to={`/topics/${article.topic}`} color="black">{article.topic}</StyledLink>
         </span>
       </header>
       <section className="Article-body">
