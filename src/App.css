@@ -94,3 +94,9 @@
   float: left;
   font-size: 100px;
 }
+
+.Span-interaction-panel {
+  margin-left: 10px;
+  margin-top: 20px;
+  display: flex;
+}
