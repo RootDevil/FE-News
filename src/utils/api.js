@@ -37,7 +37,7 @@ export const updateVotesByArticleId = (articleId, vote) => {
   );
 };
 
-export const getCommentsByArticleId = (articleId) => {
+export const fetchCommentsByArticleId = (articleId) => {
   return axios
     .get(
       `https://slurpy-nc-news.herokuapp.com/api/articles/${articleId}/comments`
