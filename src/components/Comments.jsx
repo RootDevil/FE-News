@@ -23,6 +23,7 @@ const Comments = ({ articleId }) => {
       {comments.slice(0, 3).map((comment) => {
         return (
           <CommentCard
+            key={comment.comment_id}
             author={comment.author}
             body={comment.body}
             createdAt={comment.created_at}
@@ -34,6 +35,7 @@ const Comments = ({ articleId }) => {
       {comments.slice(3).map((comment) => {
         return (
           <CommentCard
+            key={comment.comment_id}
             author={comment.author}
             body={comment.body}
             createdAt={comment.created_at}
