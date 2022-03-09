@@ -5,10 +5,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as api from "../utils/api";
 import InteractionPanel from "./InteractionPanel";
 import StyledLink from "./StyledLink";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [showComments, setShowComments] = useState(false);
   const navigate = useNavigate();
   const { article_id } = useParams();
 
@@ -36,7 +38,10 @@ const SingleArticle = () => {
           >
             Back
           </Button>
-          | <StyledLink to={`/topics/${article.topic}`} color="black">{article.topic}</StyledLink>
+          |{" "}
+          <StyledLink to={`/topics/${article.topic}`} color="black">
+            {article.topic}
+          </StyledLink>
         </span>
       </header>
       <section className="Article-body">
@@ -46,7 +51,15 @@ const SingleArticle = () => {
         </span>
         <p className="Article-section-body">{article.body}</p>
       </section>
-      <InteractionPanel articleId={article.article_id} votes={article.votes} author={article.author}/>
+      <InteractionPanel
+        articleId={article.article_id}
+        votes={article.votes}
+        author={article.author}
+        commentCount={article.comment_count}
+        showComments={showComments}
+        setShowComments={setShowComments}
+      />
+      {showComments ? <Comments articleId={article_id} /> : null}
     </section>
   );
 };

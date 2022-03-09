@@ -32,7 +32,17 @@ export const updateVotesByArticleId = (articleId, vote) => {
   return axios.patch(
     `https://slurpy-nc-news.herokuapp.com/api/articles/${articleId}`,
     {
-      inc_votes: vote
+      inc_votes: vote,
     }
   );
+};
+
+export const fetchCommentsByArticleId = (articleId) => {
+  return axios
+    .get(
+      `https://slurpy-nc-news.herokuapp.com/api/articles/${articleId}/comments`
+    )
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
 };

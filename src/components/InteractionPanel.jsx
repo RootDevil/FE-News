@@ -2,12 +2,22 @@ import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbUpSharpIcon from "@mui/icons-material/ThumbUpSharp";
 import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
 import ThumbDownAltSharpIcon from "@mui/icons-material/ThumbDownAltSharp";
-import { IconButton } from "@mui/material";
+import CommentIcon from "@mui/icons-material/Comment";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { Button, IconButton } from "@mui/material";
 import { useContext, useState } from "react";
 import * as api from "../utils/api";
 import { UserContext } from "../contexts/UserContext";
 
-const InteractionPanel = ({ articleId, votes, author }) => {
+const InteractionPanel = ({
+  articleId,
+  votes,
+  author,
+  commentCount,
+  showComments,
+  setShowComments,
+}) => {
   const [articleVotes, setArticleVotes] = useState(votes);
   const [votesChange, setVotesChange] = useState(0);
   const [error, setError] = useState(null);
@@ -49,6 +59,17 @@ const InteractionPanel = ({ articleId, votes, author }) => {
           )}
         </IconButton>
         {error ? <p>That didn't work, please reload and try again.</p> : null}
+        <Button
+          style={{ marginLeft: 20 }}
+          variant="text"
+          startIcon={<CommentIcon />}
+          endIcon={
+            showComments ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />
+          }
+          onClick={() => setShowComments((showComments) => !showComments)}
+        >
+          Comments ({commentCount})
+        </Button>
       </span>
     </section>
   );
