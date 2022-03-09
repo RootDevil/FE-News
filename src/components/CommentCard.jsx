@@ -9,7 +9,7 @@ const CommentCard = ({ author, body, createdAt, votes }) => {
       </span>
       <p>{body}</p>
       <span className="Span-comment-votes">
-        <ThumbsUpDownIcon />
+        <ThumbsUpDownIcon aria-label="votes"/>
         <p className="widget-text">{votes}</p>
       </span>
     </div>
