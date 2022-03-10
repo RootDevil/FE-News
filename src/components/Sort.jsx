@@ -1,7 +1,5 @@
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import SortIcon from "@mui/icons-material/Sort";
-import { useState } from "react";
-import * as api from "../utils/api";
 
 const Sort = ({ sort, setSort, order, setOrder }) => {
   const handleChange = (query, { target: { value } }) => {
