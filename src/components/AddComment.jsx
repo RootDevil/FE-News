@@ -1,30 +1,47 @@
 import { Button, TextField } from "@mui/material";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
+import * as api from "../utils/api";
 
-const AddComment = ({ setComments }) => {
+const AddComment = ({
+  articleId,
+  setComments,
+  setIsPosting,
+  setCommentCount,
+}) => {
   const [commentValue, setCommentValue] = useState("");
-  const [error, setError] = useState(false);
+  const [isValid, setIsValid] = useState(true);
+  const [error, setError] = useState(null);
   const { user } = useContext(UserContext);
 
   const handleChange = ({ target: { value } }) => {
     setCommentValue(value);
-    setError(commentValue.length === 0);
+    setIsValid(value.length !== 0);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (commentValue.length !== 0) {
       const commentToAdd = {
-        author: user.username,
+        username: user.username,
         body: commentValue,
-        votes: 0,
-        created_at: Date.now(),
       };
-      setComments((currentComments) => [commentToAdd, ...currentComments]);
-      setCommentValue("");
+      setIsPosting(true);
+      setError(null);
+      api
+        .addCommentByArticleId(articleId, commentToAdd)
+        .then((comment) => {
+          setComments((currentComments) => [comment, ...currentComments]);
+          setIsPosting(false);
+          setCommentValue("");
+          setCommentCount((currentCount) => currentCount + 1);
+        })
+        .catch((err) => {
+          setIsPosting(false);
+          setError(err);
+        });
     } else {
-      setError(true);
+      setIsValid(false);
     }
   };
 
@@ -34,17 +51,22 @@ const AddComment = ({ setComments }) => {
         <TextField
           multiline
           fullWidth
-          maxRows={3}
-          error={error}
-          helperText={error ? "Comment cannot be empty" : null}
           variant="filled"
           label="Add a comment..."
           placeholder="What's on your mind?"
+          maxRows={3}
           value={commentValue}
           onChange={handleChange}
-          onBlur={() => setError(commentValue.length === 0)}
+          error={!isValid}
+          helperText={!isValid ? "Comment cannot be empty" : null}
+          onBlur={() => setIsValid(commentValue.length !== 0)}
         />
         <Button type="submit">Post</Button>
+        {error ? (
+          <p className="add-comment-error">
+            Sorry that didn't work, please try again.
+          </p>
+        ) : null}
       </form>
     </section>
   );
