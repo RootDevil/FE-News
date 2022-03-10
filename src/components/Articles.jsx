@@ -42,7 +42,7 @@ const Articles = () => {
                 articleId={article.article_id}
                 title={article.title}
                 topic={article.topic}
-                author={article.author}
+                created_at={article.created_at}
                 votes={article.votes}
                 comment_count={article.comment_count}
               />

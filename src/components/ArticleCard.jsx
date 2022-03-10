@@ -6,7 +6,7 @@ const ArticleCard = ({
   articleId,
   title,
   topic,
-  author,
+  created_at,
   votes,
   comment_count,
 }) => {
@@ -24,7 +24,7 @@ const ArticleCard = ({
           <StyledLink to={`/topics/${topic}`} color="black">
             {topic}
           </StyledLink>{" "}
-          | {author}
+          | {new Date(created_at).toString().substring(4, 15)}
         </p>
       </span>
     </div>
