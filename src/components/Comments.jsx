@@ -1,6 +1,7 @@
 import { CircularProgress } from "@mui/material";
 import { useEffect, useState } from "react";
 import * as api from "../utils/api";
+import AddComment from "./AddComment";
 import CommentCard from "./CommentCard";
 import ExpansionWrapper from "./ExpansionWrapper";
 
@@ -20,6 +21,7 @@ const Comments = ({ articleId }) => {
 
   return (
     <section className="Section-comments">
+      <AddComment setComments={setComments} />
       {comments.slice(0, 3).map((comment) => {
         return (
           <CommentCard

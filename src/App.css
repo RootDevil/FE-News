@@ -123,3 +123,8 @@
 .Span-comment-votes {
   display: flex;
 }
+
+.section-add-comment {
+  text-align: left;
+  margin-bottom: 20px;
+}
