@@ -46,3 +46,14 @@ export const fetchCommentsByArticleId = (articleId) => {
       return comments;
     });
 };
+
+export const addCommentByArticleId = (articleId, comment) => {
+  return axios
+    .post(
+      `https://slurpy-nc-news.herokuapp.com/api/articles/${articleId}/comments`,
+      comment
+    )
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};

@@ -11,6 +11,7 @@ const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [showComments, setShowComments] = useState(false);
+  const [commentCount, setCommentCount] = useState(0);
   const navigate = useNavigate();
   const { article_id } = useParams();
 
@@ -18,6 +19,7 @@ const SingleArticle = () => {
     setIsLoading(true);
     api.fetchArticleById(article_id).then((article) => {
       setArticle(article);
+      setCommentCount(article.comment_count);
       setIsLoading(false);
     });
   }, [article_id]);
@@ -55,11 +57,13 @@ const SingleArticle = () => {
         articleId={article.article_id}
         votes={article.votes}
         author={article.author}
-        commentCount={article.comment_count}
+        commentCount={commentCount}
         showComments={showComments}
         setShowComments={setShowComments}
       />
-      {showComments ? <Comments articleId={article_id} /> : null}
+      {showComments ? (
+        <Comments articleId={article_id} setCommentCount={setCommentCount} />
+      ) : null}
     </section>
   );
 };
