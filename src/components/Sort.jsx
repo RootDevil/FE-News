@@ -3,22 +3,14 @@ import SortIcon from "@mui/icons-material/Sort";
 import { useState } from "react";
 import * as api from "../utils/api";
 
-const Sort = ({ topic, setArticles, setIsLoading }) => {
-  const [sort, setSort] = useState("");
-
-  const handleChange = ({ target: { value } }) => {
-    setSort(value);
-    setIsLoading(true);
-    api.fetchArticles(topic, value).then((articles) => {
-      setArticles(articles);
-      setIsLoading(false);
-    });
+const Sort = ({ sort, setSort, order, setOrder }) => {
+  const handleChange = (query, { target: { value } }) => {
+    query === "sort" ? setSort(value) : setOrder(value);
   };
 
   return (
     <div className="sort">
       <SortIcon fontSize="large" />
-
       <FormControl sx={{ minWidth: 100 }} size="small">
         <InputLabel style={{ fontFamily: "newsreader" }}>Sort by</InputLabel>
         <Select
@@ -26,7 +18,7 @@ const Sort = ({ topic, setArticles, setIsLoading }) => {
           style={{ fontFamily: "newsreader", maxHeight: 35 }}
           variant="filled"
           value={sort}
-          onChange={handleChange}
+          onChange={(e) => handleChange("sort", e)}
           placeholder="Sort by"
         >
           <MenuItem style={{ fontFamily: "newsreader" }} value={""}>
@@ -43,6 +35,24 @@ const Sort = ({ topic, setArticles, setIsLoading }) => {
           </MenuItem>
           <MenuItem style={{ fontFamily: "newsreader" }} value={"votes"}>
             Votes
+          </MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl sx={{ minWidth: 100 }} size="small">
+        <InputLabel style={{ fontFamily: "newsreader" }}>Order by</InputLabel>
+        <Select
+          defaultValue="desc"
+          style={{ fontFamily: "newsreader", maxHeight: 35 }}
+          variant="filled"
+          value={order}
+          onChange={(e) => handleChange("order", e)}
+          placeholder="Order by"
+        >
+          <MenuItem style={{ fontFamily: "newsreader" }} value={"desc"}>
+            Descending
+          </MenuItem>
+          <MenuItem style={{ fontFamily: "newsreader" }} value={"asc"}>
+            Ascending
           </MenuItem>
         </Select>
       </FormControl>
