@@ -22,7 +22,11 @@ const Articles = () => {
   return (
     <section className="Articles">
       <TopicNav />
-      <Sort />
+      <Sort
+        topic={topic_slug}
+        setArticles={setArticles}
+        setIsLoading={setIsLoading}
+      />
       {isLoading ? (
         <CircularProgress color="primary" />
       ) : (

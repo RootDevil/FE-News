@@ -123,3 +123,8 @@
 .Span-comment-votes {
   display: flex;
 }
+
+.sort {
+  display: flex;
+  justify-content: flex-end;
+}
