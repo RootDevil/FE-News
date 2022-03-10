@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../utils/api";
 import ArticleCard from "./ArticleCard";
+import Sort from "./Sort";
 import TopicNav from "./TopicNav";
 
 const Articles = () => {
@@ -21,6 +22,7 @@ const Articles = () => {
   return (
     <section className="Articles">
       <TopicNav />
+      <Sort />
       {isLoading ? (
         <CircularProgress color="primary" />
       ) : (
