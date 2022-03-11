@@ -1,6 +1,6 @@
 # Northcoders News App
 
-A React app which allows users to read news articles, and vote and comment on a particular article.
+A React app which allows users to vote and comment on news articles.
 
 *Link to hosted app*: https://slurpy-nc-news.netlify.app/
 
