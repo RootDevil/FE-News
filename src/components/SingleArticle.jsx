@@ -62,7 +62,11 @@ const SingleArticle = () => {
         setShowComments={setShowComments}
       />
       {showComments ? (
-        <Comments articleId={article_id} setCommentCount={setCommentCount} />
+        <Comments
+          articleId={article_id}
+          setCommentCount={setCommentCount}
+          articleAuthor={article.author}
+        />
       ) : null}
     </section>
   );

@@ -59,6 +59,7 @@
 }
 
 .widget-text {
+  min-width: 30px;
   margin: 10px;
 }
 
@@ -122,6 +123,7 @@
 
 .Span-comment-votes {
   display: flex;
+  flex-direction: row;
 }
 
 .sort {
@@ -136,4 +138,8 @@
 
 .add-comment-error {
   color: red;
+}
+
+.article-author-note {
+  text-align: left;
 }
