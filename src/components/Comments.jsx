@@ -35,11 +35,13 @@ const Comments = ({ articleId, setCommentCount, articleAuthor }) => {
         return (
           <CommentCard
             key={comment.comment_id}
+            commentId={comment.comment_id}
             author={comment.author}
             articleAuthor={articleAuthor}
             body={comment.body}
             createdAt={comment.created_at}
             votes={comment.votes}
+            setCommentCount={setCommentCount}
           />
         );
       })}
@@ -48,11 +50,13 @@ const Comments = ({ articleId, setCommentCount, articleAuthor }) => {
           return (
             <CommentCard
               key={comment.comment_id}
+              commentId={comment.comment_id}
               author={comment.author}
               articleAuthor={articleAuthor}
               body={comment.body}
               createdAt={comment.created_at}
               votes={comment.votes}
+              setCommentCount={setCommentCount}
             />
           );
         })}

@@ -3,13 +3,24 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@mui/material";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
+import * as api from "../utils/api";
 
-const CommentCard = ({ author, articleAuthor, body, createdAt, votes }) => {
+const CommentCard = ({
+  author,
+  articleAuthor,
+  body,
+  createdAt,
+  votes,
+  commentId,
+  setCommentCount
+}) => {
   const [isDeleted, setIsDeleted] = useState(false);
   const { user } = useContext(UserContext);
-  
+
   const onDelete = () => {
     setIsDeleted(true);
+    setCommentCount((currentCount) => currentCount - 1);
+    api.deleteCommentById(commentId).catch((err) => console.log(err));
   };
 
   if (isDeleted)

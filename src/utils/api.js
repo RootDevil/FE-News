@@ -7,7 +7,7 @@ export const fetchArticles = (topic, sort, order) => {
       params: {
         topic: topic,
         sort_by: sort,
-        order: order
+        order: order,
       },
     })
     .then(({ data: { articles } }) => {
@@ -59,4 +59,10 @@ export const addCommentByArticleId = (articleId, comment) => {
     .then(({ data: { comment } }) => {
       return comment;
     });
+};
+
+export const deleteCommentById = (commentId) => {
+  return axios.delete(
+    `https://slurpy-nc-news.herokuapp.com/api/comments/${commentId}`
+  );
 };
