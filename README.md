@@ -1,6 +1,12 @@
 # Northcoders News App
 
-A React app which allows users to vote and comment on news articles.
+A React app for viewing and interacting with news articles.
+
+Upon visiting the app, you'll assume the identity of `grumpy19`.  Feel free to comment on any of the articles with this username.  You'll also be able to delete any other comment left by `grumpy19`, as well as remove any comments made on articles authored by this user. Articles can be filtered by topic by using the navigation bar at the top of the page, or sorted by using the `Sort by` dropdown.  Filters can also be set by the URL `/topics/[topic]`
+
+### Desired features
+- Ability to switch user
+- Ability to vote on comments
 
 *Link to hosted app*: https://slurpy-nc-news.netlify.app/
 
