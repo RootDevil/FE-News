@@ -53,7 +53,7 @@ const CommentCard = ({
       <p>{body}</p>
       <span className="Span-interaction-panel">
         <ThumbsUpDownIcon aria-label="votes" />
-        <p className="widget-text">{votes}</p>
+        <p className="comment-bar-text">{votes}</p>
         <Button
           color="error"
           style={{ paddingBottom: 10 }}
