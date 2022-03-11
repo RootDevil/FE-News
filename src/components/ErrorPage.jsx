@@ -8,7 +8,7 @@ const ErrorPage = ({ error }) => {
       {error ? (
         <h2>{error.message}</h2>
       ) : (
-        <h2>"Sorry, that page doesn't exist"</h2>
+        <h2>Sorry, that page doesn't exist</h2>
       )}
       <Link to="/">
         <Button variant="text" startIcon={<KeyboardBackspaceIcon />}>

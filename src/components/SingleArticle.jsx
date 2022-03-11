@@ -6,10 +6,12 @@ import * as api from "../utils/api";
 import InteractionPanel from "./InteractionPanel";
 import StyledLink from "./StyledLink";
 import Comments from "./Comments";
+import ErrorPage from "./ErrorPage";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const [commentCount, setCommentCount] = useState(0);
   const navigate = useNavigate();
@@ -17,12 +19,17 @@ const SingleArticle = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticleById(article_id).then((article) => {
-      setArticle(article);
-      setCommentCount(article.comment_count);
-      setIsLoading(false);
-    });
+    api
+      .fetchArticleById(article_id)
+      .then((article) => {
+        setArticle(article);
+        setCommentCount(article.comment_count);
+        setIsLoading(false);
+      })
+      .catch(({response: { data }}) => setError(data));
   }, [article_id]);
+
+  if (error) return <ErrorPage error={error} />
 
   if (isLoading) return <CircularProgress color="primary" />;
 
