@@ -5,7 +5,7 @@ import AddComment from "./AddComment";
 import CommentCard from "./CommentCard";
 import ExpansionWrapper from "./ExpansionWrapper";
 
-const Comments = ({ articleId, setCommentCount }) => {
+const Comments = ({ articleId, setCommentCount, articleAuthor }) => {
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
@@ -36,6 +36,7 @@ const Comments = ({ articleId, setCommentCount }) => {
           <CommentCard
             key={comment.comment_id}
             author={comment.author}
+            articleAuthor={articleAuthor}
             body={comment.body}
             createdAt={comment.created_at}
             votes={comment.votes}
@@ -48,6 +49,7 @@ const Comments = ({ articleId, setCommentCount }) => {
             <CommentCard
               key={comment.comment_id}
               author={comment.author}
+              articleAuthor={articleAuthor}
               body={comment.body}
               createdAt={comment.created_at}
               votes={comment.votes}

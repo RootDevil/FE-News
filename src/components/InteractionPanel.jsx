@@ -34,7 +34,7 @@ const InteractionPanel = ({
 
   return (
     <section>
-      <span className="Span-interaction-panel">
+      <div className="Span-interaction-panel">
         <IconButton
           aria-label="like"
           onClick={() => handleVotes(1)}
@@ -70,7 +70,7 @@ const InteractionPanel = ({
         >
           Comments ({commentCount})
         </Button>
-      </span>
+      </div>
     </section>
   );
 };
