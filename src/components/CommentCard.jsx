@@ -12,23 +12,37 @@ const CommentCard = ({
   createdAt,
   votes,
   commentId,
-  setCommentCount
+  setCommentCount,
 }) => {
   const [isDeleted, setIsDeleted] = useState(false);
+  const [error, setError] = useState(null);
   const { user } = useContext(UserContext);
 
   const onDelete = () => {
     setIsDeleted(true);
-    setCommentCount((currentCount) => currentCount - 1);
-    api.deleteCommentById(commentId).catch((err) => console.log(err));
+    api
+      .deleteCommentById(commentId)
+      .then(() => {
+        setCommentCount((currentCount) => currentCount - 1);
+      })
+      .catch((err) => setError(err));
   };
 
-  if (isDeleted)
+  if (error) {
+    return (
+      <div className="comment">
+        <p>There was a problem deleting the comment.</p>
+      </div>
+    );
+  }
+
+  else if (isDeleted) {
     return (
       <div className="comment">
         <p>Comment deleted.</p>
       </div>
     );
+  }
 
   return (
     <div className="comment">
