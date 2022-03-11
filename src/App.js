@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Articles from "./components/Articles";
+import ErrorPage from "./components/ErrorPage";
 import Header from "./components/Header";
 import SingleArticle from "./components/SingleArticle";
 import { UserContext } from "./contexts/UserContext";
@@ -29,6 +30,7 @@ function App() {
         <div className="App">
           <Header />
           <Routes>
+            <Route path="*" element={<ErrorPage />} />
             <Route path="/" element={<Articles />} />
             <Route path="/topics/:topic_slug" element={<Articles />} />
             <Route path="/articles/:article_id" element={<SingleArticle />} />
