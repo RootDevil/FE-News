@@ -3,23 +3,32 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import * as api from "../utils/api";
 import ArticleCard from "./ArticleCard";
+import ErrorPage from "./ErrorPage";
 import Sort from "./Sort";
 import TopicNav from "./TopicNav";
 
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [sort, setSort] = useState("");
   const [order, setOrder] = useState("desc");
   const { topic_slug } = useParams();
 
   useEffect(() => {
     setIsLoading(true);
-    api.fetchArticles(topic_slug, sort, order).then((articles) => {
-      setArticles(articles);
-      setIsLoading(false);
-    });
+    api
+      .fetchArticles(topic_slug, sort, order)
+      .then((articles) => {
+        setArticles(articles);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [topic_slug, sort, order]);
+
+  if (error) return <ErrorPage error={error} />
 
   return (
     <section className="Articles">
@@ -35,6 +44,7 @@ const Articles = () => {
         <CircularProgress color="primary" />
       ) : (
         <section className="Articles-grid">
+          {articles.length === 0 ? <p>No articles exist for that topic.</p> : null}
           {articles.map((article) => {
             return (
               <ArticleCard
