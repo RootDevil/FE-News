@@ -20,9 +20,7 @@ const theme = createTheme({
 });
 
 function App() {
-  const [user, setUser] = useState({
-    username: "grumpy19",
-  });
+  const [user, setUser] = useState({});
 
   return (
     <ThemeProvider theme={theme}>
