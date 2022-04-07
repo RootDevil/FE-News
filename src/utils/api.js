@@ -73,4 +73,13 @@ export const fetchUserByUsername = (username) => {
   .then(({ data: { user } }) => {
     return user;
   });
+};
+
+export const updateVotesByCommentId = (commentId, vote) => {
+  return axios.patch(
+    `https://slurpy-nc-news.herokuapp.com/api/comments/${commentId}`,
+    {
+      inc_votes: vote,
+    }
+  )
 }

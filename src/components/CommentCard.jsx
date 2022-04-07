@@ -27,7 +27,7 @@ const CommentCard = ({
   const handleVotes = (votecrement) => {
     setCommentVotes((currentVotes) => currentVotes + votecrement);
     setVotesChange((currentChange) => currentChange + votecrement);
-    api.updateVotesByArticleId(commentId, votecrement).catch((error) => {
+    api.updateVotesByCommentId(commentId, votecrement).catch((error) => {
       setVoteError(error);
       setCommentVotes((currentVotes) => currentVotes - votecrement);
     });
