@@ -65,3 +65,12 @@ export const deleteCommentById = (commentId) => {
     `https://slurpy-nc-news.herokuapp.com/api/comments/${commentId}`
   );
 };
+
+export const fetchUserByUsername = (username) => {
+  return axios.get(
+    `https://slurpy-nc-news.herokuapp.com/api/users/${username}`
+  )
+  .then(({ data: { user } }) => {
+    return user;
+  });
+}
