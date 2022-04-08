@@ -25,6 +25,8 @@ This app uses a backend API for data:
 - `cd FE-News`
 - `npm install` to install dependencies
 
-### Building
+### Locally hosting
 - `npm start` to host a local development server
+
+### Building
 - `npm build` to create a production build
